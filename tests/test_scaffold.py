@@ -26,6 +26,12 @@ class ScaffoldTests(unittest.TestCase):
 
         self.assertIn("name: check", text)
         self.assertIn("description:", text)
+        for relative in (
+            "skills/check/references/contract.md",
+            "skills/check/references/verdicts.md",
+            "skills/check/references/report-format.md",
+        ):
+            self.assertTrue((ROOT / relative).is_file(), relative)
 
 
 if __name__ == "__main__":
