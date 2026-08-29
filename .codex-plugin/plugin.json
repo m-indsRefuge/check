@@ -1,0 +1,6 @@
+{
+  "name": "check",
+  "version": "0.1.0",
+  "description": "Check artifacts against explicit requirements.",
+  "skills": "./skills/"
+}
