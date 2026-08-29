@@ -2,8 +2,10 @@ from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Any
 
+from .expressions import derive_expression_results
 from .models import ValidationIssue
 from .schema import schema_issues
+from .scoring import score_issues
 
 
 def _issue(code: str, path: str, message: str) -> ValidationIssue:
@@ -422,6 +424,30 @@ def validate_report(
                 "assessment",
                 issues,
             )
+
+    if not any(issue.code == "EXPRESSION_CYCLE" for issue in issues):
+        expected_results = {
+            item["expression_id"]: item for item in derive_expression_results(report)
+        }
+        actual_results = {item["expression_id"]: item for item in report["expression_results"]}
+        comparable_fields = (
+            "verdict",
+            "member_assessment_ids",
+            "score_strength",
+            "excluded_reason",
+        )
+        for expression_id, expected in expected_results.items():
+            actual = actual_results.get(expression_id)
+            if actual is None or any(actual.get(field) != expected.get(field) for field in comparable_fields):
+                issues.append(
+                    _issue(
+                        "EXPRESSION_RESULT_MISMATCH",
+                        "/expression_results",
+                        f"Expression result for {expression_id!r} does not match deterministic derivation.",
+                    )
+                )
+
+        issues.extend(score_issues(report))
 
     return tuple(issues)
 
