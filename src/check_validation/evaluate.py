@@ -37,7 +37,7 @@ def _validate_observation(observation: Mapping[str, Any], index: int) -> None:
         raise ValueError(f"observation {index} has invalid observed_verdict: {observed!r}")
     for key in _BOOL_KEYS:
         if not isinstance(observation[key], bool):
-            raise ValueError(f"observation {index} field {key!r} must be boolean")
+            raise TypeError(f"observation {index} field {key!r} must be boolean")
 
 
 def _ratio(numerator: int, denominator: int) -> float | None:
