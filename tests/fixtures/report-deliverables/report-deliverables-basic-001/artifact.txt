@@ -1,0 +1,5 @@
+Executive summary: Customer response time improved during the pilot.
+Recommendations:
+1. Extend the pilot.
+2. Add escalation templates.
+3. Measure first-contact resolution.

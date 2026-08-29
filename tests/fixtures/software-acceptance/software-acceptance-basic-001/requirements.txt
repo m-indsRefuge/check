@@ -1,0 +1,1 @@
+Acceptance criteria: the command exits with code 0 for valid input and rejects an empty project name with a clear error.

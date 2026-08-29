@@ -1,0 +1,3 @@
+Verification report:
+- valid input smoke test: exit code 0.
+- empty project name test: rejected with "project name must not be empty".

@@ -1,0 +1,1 @@
+Required: AWS Certified Solutions Architect certification.

@@ -1,0 +1,1 @@
+Incident report: Service was restored at 14:10 after a routing configuration rollback. No personal identifiers are included.
