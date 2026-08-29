@@ -175,3 +175,10 @@ def minimal_valid_report() -> dict:
 @pytest.fixture
 def minimal_report() -> dict:
     return deepcopy(minimal_valid_report())
+
+
+@pytest.fixture
+def repo_root():
+    from pathlib import Path
+
+    return Path(__file__).resolve().parents[2]
