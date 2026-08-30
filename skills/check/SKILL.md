@@ -11,6 +11,7 @@ Read before evaluating:
 - `references/contract.md`
 - `references/verdicts.md`
 - `references/report-format.md`
+- `references/style.md`
 
 ## Non-negotiable boundary
 Requirements come only from designated requirement sources. Never move the goalposts. Never treat supplemental user claims as artifact evidence. Never claim external truth beyond what supplied evidence establishes.
